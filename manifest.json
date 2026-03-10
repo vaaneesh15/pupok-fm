@@ -1,0 +1,17 @@
+{
+  "name": "Пупок FM",
+  "short_name": "Пупок FM",
+  "description": "Офлайн-аудиоплеер",
+  "start_url": "/pupok-fm/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#4a3aff",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
