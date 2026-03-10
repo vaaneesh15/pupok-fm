@@ -1,14 +1,16 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Фиолетовый градиентный фон -->
+  <!-- Фиолетовый фон -->
   <rect width="512" height="512" rx="128" fill="url(#grad)" />
-  <!-- Стеклянный блик -->
   <rect x="32" y="32" width="448" height="448" rx="96" fill="url(#glass)" />
   
-  <!-- Мягкий треугольник play со смещением вправо и изогнутыми сторонами -->
-  <path d="M160,136 Q310,196 420,256 Q290,336 160,376 Q150,256 160,136 Z" 
-        fill="white" fill-opacity="0.95" 
-        stroke="white" stroke-width="30" 
-        stroke-linejoin="round" stroke-linecap="round" />
+  <!-- РАВНОСТОРОННИЙ ТРЕУГОЛЬНИК со скруглёнными углами, смещён левее -->
+  <path d="M190 150 L400 256 L190 362 L190 150" 
+        fill="white" 
+        fill-opacity="0.95" 
+        stroke="white" 
+        stroke-width="40" 
+        stroke-linejoin="round" 
+        stroke-linecap="round" />
 
   <defs>
     <linearGradient id="grad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
