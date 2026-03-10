@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Пупок FM</title>
+    <!-- Подключаем манифест для PWA -->
+    <link rel="manifest" href="manifest.json">
     <style>
-        /* --- Все стили из твоего исходного файла (без изменений) --- */
         * {
             margin: 0;
             padding: 0;
@@ -868,7 +869,7 @@
                     const isMp3 = file.type === 'audio/mpeg' || file.name.toLowerCase().endsWith('.mp3');
                     const isFlac = file.type === 'audio/flac' || file.name.toLowerCase().endsWith('.flac');
                     if (!isMp3 && !isFlac) {
-                        alert(`Файл "" не является MP3 или FLAC.`);
+                        alert(`Файл "${file.name}" не является MP3 или FLAC.`);
                         continue;
                     }
 
@@ -877,12 +878,12 @@
                         duration = await getAudioDuration(file);
                     } catch (err) {
                         console.warn('Ошибка при загрузке аудио:', err);
-                        alert(`Не удалось загрузить "". Файл повреждён или не поддерживается.`);
+                        alert(`Не удалось загрузить "${file.name}". Файл повреждён или не поддерживается.`);
                         continue;
                     }
 
                     if (duration === null || isNaN(duration) || duration <= 0) {
-                        alert(`Не удалось прочитать длительность "".`);
+                        alert(`Не удалось прочитать длительность "${file.name}".`);
                         continue;
                     }
 
