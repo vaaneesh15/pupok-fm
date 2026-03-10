@@ -2,11 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- Запрет масштабирования и лишних жестов -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Пупок FM</title>
     
-    <!-- Метатеги для PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Пупок FM">
@@ -15,7 +13,6 @@
     <link rel="manifest" href="manifest.json">
     
     <style>
-        /* Глобальные стили для запрета лишних действий */
         html, body {
             overscroll-behavior: none;
             overflow: hidden;
@@ -39,8 +36,7 @@
         body {
             --bg-gradient-start: #e9e9f0;
             --bg-gradient-end: #dadde8;
-            --container-bg: rgba(240, 240, 245, 0.7);
-            --container-border: rgba(255,255,255,0.5);
+            --container-bg: rgba(240, 240, 245, 0.8);
             --text-primary: #1a1a2e;
             --text-secondary: #2c3e50;
             --text-muted: #6b6b80;
@@ -48,7 +44,7 @@
             --accent-light: #7a6aff;
             --card-bg: rgba(255, 255, 255, 0.6);
             --card-border: rgba(255,255,255,0.6);
-            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+            --shadow: 0 25px 40px -20px rgba(0,0,0,0.2);
             --delete-color: #ff6b6b;
             --slider-track: rgba(0,0,0,0.08);
             --slider-thumb: white;
@@ -60,14 +56,19 @@
             --control-btn-color: var(--accent);
             --panel-separator: rgba(0,0,0,0.08);
             transition: background 0.2s, color 0.2s;
+            
+            background: linear-gradient(145deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
         body.dark {
             --bg-gradient-start: #1a1a2e;
             --bg-gradient-end: #16213e;
-            /* Более плотный фон контейнера, чтобы не было просветов */
             --container-bg: rgba(26, 26, 46, 0.95);
-            --container-border: rgba(255,255,255,0.1);
             --text-primary: #f0f0ff;
             --text-secondary: #ecf0f1;
             --text-muted: #8a8aa0;
@@ -75,8 +76,7 @@
             --accent-light: #9a8cff;
             --card-bg: rgba(40, 40, 55, 0.7);
             --card-border: rgba(255,255,255,0.1);
-            /* Мягкая тень, чтобы не создавала полос */
-            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            --shadow: 0 25px 40px -20px rgba(0,0,0,0.5);
             --delete-color: #ff8a8a;
             --slider-track: rgba(255,255,255,0.15);
             --slider-thumb: #e0e0ff;
@@ -89,24 +89,14 @@
             --panel-separator: rgba(255,255,255,0.15);
         }
 
-        body {
-            background: linear-gradient(145deg, var(--bg-gradient-start), var(--bg-gradient-end));
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
         .player-container {
             width: 100%;
             height: 100vh;
             background: var(--container-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: var(--shadow), inset 0 1px 2px rgba(255,255,255,0.2);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            box-shadow: var(--shadow);
             padding: max(24px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom)) 16px;
-            border: none;
             display: flex;
             flex-direction: column;
         }
@@ -131,7 +121,7 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.05);
             cursor: pointer;
             transition: all 0.2s ease;
-            border: 1px solid var(--container-border);
+            border: none;
             color: var(--accent);
             font-size: 20px;
             flex-shrink: 0;
@@ -164,7 +154,7 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.05);
             cursor: pointer;
             transition: all 0.2s ease;
-            border: 1px solid var(--container-border);
+            border: none;
             color: var(--accent);
             font-size: 22px;
             flex-shrink: 0;
@@ -194,7 +184,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            border: 1px solid var(--card-border);
+            border: none;
             backdrop-filter: blur(5px);
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
             flex: 1;
@@ -238,7 +228,7 @@
             justify-content: center;
             cursor: pointer;
             transition: 0.1s;
-            border: 1px solid var(--card-border);
+            border: none;
             color: var(--control-btn-color);
             font-size: 22px;
         }
@@ -269,7 +259,7 @@
             background: var(--panel-bg);
             border-radius: 28px;
             padding: 16px 0 16px 12px;
-            border: 1px solid var(--card-border);
+            border: none;
             backdrop-filter: blur(5px);
             flex: 1;
             display: flex;
@@ -283,7 +273,7 @@
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: var(--scroll-thumb) var(--scroll-track);
-            -webkit-overflow-scrolling: touch; /* плавная прокрутка на iOS */
+            -webkit-overflow-scrolling: touch;
         }
 
         .playlist-content::-webkit-scrollbar {
@@ -315,7 +305,7 @@
             padding: 16px;
             margin-bottom: 12px;
             margin-right: 12px;
-            border: 1px solid var(--card-border);
+            border: none;
         }
 
         .track-item:last-child {
@@ -349,7 +339,7 @@
             background: var(--icon-bg);
             cursor: pointer;
             transition: 0.1s;
-            border: 1px solid var(--card-border);
+            border: none;
             font-size: 16px;
         }
 
@@ -429,7 +419,7 @@
             box-shadow: 0 6px 12px rgba(74,58,255,0.15);
             cursor: pointer;
             flex-shrink: 0;
-            border: 1px solid var(--card-border);
+            border: none;
         }
 
         .play-pause-btn:active {
@@ -445,7 +435,6 @@
             display: none !important;
         }
     </style>
-    <!-- Font Awesome через CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
